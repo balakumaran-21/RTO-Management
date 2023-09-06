@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="1010.0" style="-fx-border-color: rgb(220,117,248);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewRejectRequestsCardController">
+   <children>
+      <Label fx:id="idLabel" alignment="CENTER" prefHeight="40.0" prefWidth="96.0" text="10000">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regDateLabel" alignment="CENTER" prefHeight="40.0" prefWidth="140.0" text="2023-09-02">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="expDateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="114.0" text="2025-09-02">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vehicleTypeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="147.0" text="Two-Wheeler">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="fuelTypeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="105.0" text="Petrol">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="manYearLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="157.0" text="2003">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regNoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="164.0" text="TN01M9743">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>

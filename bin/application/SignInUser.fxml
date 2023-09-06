@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" style="-fx-background-color: rgb(220,117,248,0.04);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignInUserController">
+   <children>
+      <Pane layoutY="-2.0" prefHeight="123.0" prefWidth="1280.0" style="-fx-background-color: rgb(220,117,248);">
+         <children>
+            <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="1.0" layoutY="28.0" prefHeight="51.0" prefWidth="1280.0" text="Welcome User" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1.0" layoutY="79.0" prefHeight="17.0" prefWidth="1280.0" text="As a user you have access to request these  actions" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Button fx:id="regVehicleButton" layoutX="-1.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="Request Vehicle Registration">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="-1.0" layoutY="487.0" mnemonicParsing="false" onAction="#logout" prefHeight="36.0" prefWidth="251.0" text="Logout">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="viewRegButton" layoutX="-1.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="View Registration details">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="transferButton" layoutX="-1.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="Request Tranfer of Ownership">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="renewalButton" layoutX="-1.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="Request Registration Renewal ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <StackPane layoutX="258.0" layoutY="121.0" prefHeight="580.0" prefWidth="1021.0">
+         <children>
+            <Pane fx:id="paneTransfer" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="demoLabel2" alignment="CENTER" layoutY="187.0" prefHeight="70.0" prefWidth="597.0" text="Transfer">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneProfile" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="ownerDistrictLabel" layoutX="160.0" layoutY="242.0" prefHeight="30.0" prefWidth="307.0" text="District: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ownerNameLabel" layoutX="160.0" layoutY="88.0" prefHeight="30.0" prefWidth="307.0" text="Name: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ownerStateLabel" layoutX="160.0" layoutY="203.0" prefHeight="30.0" prefWidth="307.0" text="State: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ownerContactLabel" layoutX="160.0" layoutY="164.0" prefHeight="30.0" prefWidth="307.0" text="Contact No: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ownerAgeLabel" layoutX="160.0" layoutY="124.0" prefHeight="30.0" prefWidth="307.0" text="Age: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ownerAddressLabel" layoutX="160.0" layoutY="281.0" prefHeight="30.0" prefWidth="307.0" text="Address: ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="260.0" layoutY="350.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: rgb(220,117,248);" text="Update User Details" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVehicleReg" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ffff;">
+               <children>
+                  <Label layoutX="202.0" layoutY="26.0" prefHeight="25.0" prefWidth="94.0" text="Vehicle Type">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="vehicleType" layoutX="202.0" layoutY="59.0" prefHeight="25.0" prefWidth="191.0" />
+                  <Label layoutX="202.0" layoutY="96.0" text="Fuel Type">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="fuelType" layoutX="201.0" layoutY="127.0" prefHeight="25.0" prefWidth="191.0" />
+                  <Label layoutX="201.0" layoutY="174.0" text="Year of Manufacture">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="yearField" layoutX="201.0" layoutY="210.0" prefHeight="25.0" prefWidth="191.0" />
+                  <Pane fx:id="reRegisterNo" layoutX="143.0" layoutY="247.0" prefHeight="93.0" prefWidth="307.0">
+                     <children>
+                        <Label layoutX="63.0" layoutY="4.0" text="Enter your register number">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="customNumberField" layoutX="63.0" layoutY="47.0" prefHeight="25.0" prefWidth="191.0" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="reRegisterButton" layoutX="190.0" layoutY="378.0" mnemonicParsing="false" onAction="#raiseReRequest" prefHeight="38.0" prefWidth="235.0" style="-fx-background-color: #dc75f8;" text="Request Registration " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="registerButton" layoutX="190.0" layoutY="378.0" mnemonicParsing="false" onAction="#raiseRequest" prefHeight="38.0" prefWidth="235.0" style="-fx-background-color: #dc75f8;" text="Request Regsitration" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="infoLabel" alignment="CENTER" layoutX="-1.0" layoutY="340.0" prefHeight="25.0" prefWidth="597.0" textFill="#dc75f8">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneRenewal" prefHeight="435.0" prefWidth="575.0" style="-fx-background-color: white;">
+               <children>
+                  <ScrollPane layoutY="41.0" prefHeight="542.0" prefWidth="1021.0">
+                     <content>
+                        <VBox fx:id="regRenwalVBox" prefHeight="545.0" prefWidth="1010.0" />
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1021.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="98.0" text="User ID">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="130.0" text="Register Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="131.0" text="Expiry Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="129.0" text="Vehicle Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="113.0" text="Fuel Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="175.0" text="Manufacture Year">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="335.0" text="Register Number">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Pane fx:id="paneViewReg" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <ScrollPane layoutY="38.0" prefHeight="542.0" prefWidth="1021.0">
+                     <content>
+                        <VBox fx:id="viewRegBox" prefHeight="581.0" prefWidth="1010.0" />
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="1021.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="98.0" text="User ID">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="130.0" text="Register Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="131.0" text="Expiry Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="129.0" text="Vehicle Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="113.0" text="Fuel Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="175.0" text="Manufacture Year">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" prefHeight="36.0" prefWidth="151.0" text="Register Number">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children></Pane>
+            <Pane fx:id="paneViewRejects" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <ScrollPane layoutY="38.0" prefHeight="542.0" prefWidth="1021.0">
+                     <content>
+                        <VBox fx:id="viewRejectBox" prefHeight="546.0" prefWidth="1010.0" />
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="1021.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="98.0" text="User ID">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="130.0" text="Register Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="131.0" text="Expiry Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="129.0" text="Vehicle Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="113.0" text="Fuel Type">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="175.0" text="Manufacture Year">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" prefHeight="36.0" prefWidth="151.0" text="Register Number">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <Button fx:id="profileButton" layoutX="-1.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="Profile">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="viewRejectButton" layoutX="-1.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="36.0" prefWidth="251.0" text="View Rejected Requests">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

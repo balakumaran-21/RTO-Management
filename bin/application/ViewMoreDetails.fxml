@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewMoreDetailsController">
+   <children>
+      <Pane prefHeight="105.0" prefWidth="1280.0" style="-fx-background-color: #dc75f8;">
+         <children>
+            <Label alignment="CENTER" layoutY="30.0" prefHeight="45.0" prefWidth="1280.0" text="Vehicle Request Approval Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="ownerDetails" alignment="CENTER" layoutX="112.0" layoutY="170.0" prefHeight="352.0" prefWidth="508.0" style="-fx-border-color: #dc75f8; -fx-border-width: 2px; -fx-background-color: white;" text="ID: 10000Name: BalakumaranAge: 21Contact number: 9361824177State :Tamil NaduDistrict: KolathurAddress: XYZ street">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="registrationDetails" alignment="CENTER" layoutX="658.0" layoutY="170.0" prefHeight="352.0" prefWidth="523.0" style="-fx-border-color: #dc75f8; -fx-border-width: 2px; -fx-background-color: white;" text="Registration date: 2023-09-03Owner ID: 10000Register Number: TN01X1167Expiry date: 2025-09 Fuel Type: PetrolYear of Manufacture: 2004Vehicle Type: Two-Wheeler">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="464.0" layoutY="602.0" mnemonicParsing="false" onAction="#accept" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #dc75f8;" text="Accept" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="601.0" layoutY="602.0" mnemonicParsing="false" onAction="#reject" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #dc75f8;" text="Reject" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="726.0" layoutY="602.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #dc75f8;" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Label fx:id="vehiclesCount" alignment="CENTER" contentDisplay="TOP" layoutY="542.0" prefHeight="30.0" prefWidth="1280.0" text="Total number of vehicles Registered by this user: ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="112.0" layoutY="130.0" prefHeight="40.0" prefWidth="508.0" text="User Details" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="658.0" layoutY="130.0" prefHeight="40.0" prefWidth="523.0" text="Registration Details" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

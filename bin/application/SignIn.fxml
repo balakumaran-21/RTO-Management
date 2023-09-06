@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignInController">
+   <children>
+      <ImageView fitHeight="496.0" fitWidth="437.0" layoutX="-6.0" layoutY="-4.0">
+         <image>
+            <Image url="@../../../../../Downloads/signInBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="470.0" layoutY="128.0" text="Username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="470.0" layoutY="221.0" prefHeight="30.0" prefWidth="89.0" text="Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="signInButton" layoutX="470.0" layoutY="357.0" mnemonicParsing="false" onAction="#signIn" prefHeight="43.0" prefWidth="349.0" style="-fx-background-color: #dc75f8;" text="Sign In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="usernameField" layoutX="470.0" layoutY="164.0" prefHeight="39.0" prefWidth="349.0" styleClass="textfield" stylesheets="@application.css" />
+      <Label layoutX="523.0" layoutY="420.0" text="Not Registered ?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="77.0" layoutY="86.0" prefHeight="315.0" prefWidth="271.0" style="-fx-background-color: rgb(20,20,20,0.1);">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="19.0" layoutY="64.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="📲 Digital platform for automating" wrappingWidth="233.217529296875">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#5800a6" layoutX="19.0" layoutY="223.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="RTO Management" wrappingWidth="233.21752929687506">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="#00000098" layoutX="470.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the information you entered while registering.">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="470.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello 👋">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Button layoutX="665.0" layoutY="414.0" mnemonicParsing="false" onAction="#switchToSignUpPage" style="-fx-background-color: transparent;" text="Sign Up here" textFill="#dc75f8" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passField" layoutX="470.0" layoutY="258.0" prefHeight="39.0" prefWidth="349.0" styleClass="textfield" stylesheets="@application.css" />
+      <Label fx:id="warningLabel" alignment="CENTER" layoutX="469.0" layoutY="314.0" prefHeight="30.0" prefWidth="349.0" textFill="#dc75f8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
