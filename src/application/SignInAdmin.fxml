@@ -49,11 +49,6 @@
       </Pane>
       <StackPane layoutX="218.0" layoutY="103.0" prefHeight="545.0" prefWidth="1061.0">
          <children>
-            <Pane fx:id="transferRequestsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <children>
-                  <Label text="Transfer request" />
-               </children>
-            </Pane>
             <Pane fx:id="vehicleRequestsPane" prefHeight="545.0" prefWidth="1001.0" style="-fx-background-color: white;">
                <children>
                   <ScrollPane layoutY="35.0" prefHeight="510.0" prefWidth="1061.0">
@@ -152,6 +147,39 @@
                   <ScrollPane layoutY="38.0" prefHeight="510.0" prefWidth="1061.0">
                      <content>
                         <VBox fx:id="renewalReqsVbox" prefHeight="523.0" prefWidth="1045.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="transferRequestsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="1061.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="237.0" text="Current Registered User ID">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="235.0" text="Registration to transfer">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="170.0" text="New user ID">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="170.0" text="Button here">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ScrollPane layoutX="122.0" layoutY="46.0" prefHeight="496.0" prefWidth="820.0">
+                     <content>
+                        <VBox fx:id="tranferRequestsVBox" prefHeight="503.0" prefWidth="803.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
                </children>

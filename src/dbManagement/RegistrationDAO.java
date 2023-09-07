@@ -61,6 +61,19 @@ public class RegistrationDAO {
 		return vehicles;
 	}
 	
+	public static ArrayList<String> getRemarks(int id) throws SQLException{
+		ArrayList<String> remarks = new ArrayList<String>();
+		String query = "select remarks from vehicle_registration_status where ownerID = ? and reg_status = 'Rejected'";
+		Connection con = DBconnect.connectDB();
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setInt(1, id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			remarks.add(rs.getString(1));
+		}
+		return remarks;
+	}
+	
 	public static void registrationDetails(Vehicle vehicle, int ownerID) throws SQLException {
 		Registration registration = new Registration();
 		

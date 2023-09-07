@@ -103,6 +103,25 @@ public class VehicleRequestsDAO {
 		 return count;
 	 }
 	
+	 public static Vehicle getVehicleDetails(String reg_no) throws SQLException {
+		 String query = "select vehicle_type, fuel_type, man_year from vehicle_registration_status where reg_no = ?";
+		 Connection con = DBconnect.connectDB();
+		 PreparedStatement pst = con.prepareStatement(query);
+		 pst.setString(1,reg_no);
+		 ResultSet rs = pst.executeQuery();
+		 rs.next();
+		 return new Vehicle(rs.getString(1),rs.getString(2),rs.getInt(3));
+	 }
 	 
-	 
+	 public static Registration getRegistrationDetails(String reg_no) throws SQLException {
+		 
+		 String query = "Select ownerID, reg_date, expiry_date, reg_no from vehicle_registration_status where reg_no = ?";
+		 Connection con = DBconnect.connectDB();
+		 PreparedStatement pst = con.prepareStatement(query);
+		 pst.setString(1, reg_no);
+		 ResultSet rs = pst.executeQuery();
+		 rs.next();
+		 return new Registration(rs.getInt(1),rs.getDate(2),rs.getDate(3),rs.getString(4));
+		 
+	 }
 }

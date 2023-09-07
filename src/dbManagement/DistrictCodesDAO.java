@@ -43,7 +43,8 @@ public class DistrictCodesDAO {
 				districtCode = rs.getInt(2);
 				districtCodesMap.put(rs.getString(1), districtCode);
 				if(max < districtCode) {
-					districtCode = max;
+					System.out.println("Districtc  code: "+ districtCode);
+					max = districtCode;
 				}
 		}
 		
@@ -51,11 +52,12 @@ public class DistrictCodesDAO {
 			System.out.println("----------------------------------------------------------------------------------------------------------------");
 			System.out.println(m.getKey()+":"+m.getValue());
 			System.out.println("----------------------------------------------------------------------------------------------------------------");
-		}System.out.println(districtCode);
+		}
 		
 		if(districtCodesMap.containsKey(district)) {
 			districtCode = districtCodesMap.get(district);
 		}else {
+			districtCode = max+1;
 			String insertQuery = QueriesList.insertDistrictCodes;
 			Connection conn = DBconnect.connectDB();
 			PreparedStatement ipst = conn.prepareStatement(insertQuery);

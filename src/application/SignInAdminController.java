@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import rtoManagement.Registration;
+import rtoManagement.TransferRequest;
 import rtoManagement.Vehicle;
 import dbManagement.RenewalRequestDAO;
+import dbManagement.TransferRequestsDAO;
 import dbManagement.VehicleRequestsDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +45,7 @@ public class SignInAdminController implements Initializable{
     private Pane vehicleRequestsPane, transferRequestsPane, renewalRequestsPane;
     
     @FXML 
-    VBox vehicleRegVbox, renewalReqsVbox;
+    VBox vehicleRegVbox, renewalReqsVbox, tranferRequestsVBox;
     
     int id = 0;
 
@@ -79,6 +81,7 @@ public class SignInAdminController implements Initializable{
     	}
     	else if(event.getSource() == transferRequestsButton) {
     		transferRequestsPane.toFront();
+    		renderTransferRequests(event);
     	}  
 
     }
@@ -141,7 +144,7 @@ public class SignInAdminController implements Initializable{
     }
     
     public void renderRenewalRequests(ActionEvent event) throws SQLException, IOException {
-    	//renewalRequests /** !Must change ! **/
+    	
     	ArrayList<Registration> renewalRegsreqs = RenewalRequestDAO.showRenewableRegistrationsToAdmin();
     	ArrayList<Vehicle> renewalvehicleRequests = RenewalRequestDAO.showRenewableVehiclesToAdmin();
     	renewalReqsVbox.getChildren().clear();
@@ -156,6 +159,24 @@ public class SignInAdminController implements Initializable{
     		
     	}
     	
+    }
+    
+    /*************************************************************************************************************/
+    
+    /************************************ render transfer requests ***********************************************/
+    
+    public void renderTransferRequests(ActionEvent event) throws SQLException, IOException {
+    	
+    	ArrayList<TransferRequest> transferRequests = TransferRequestsDAO.showAllTransferRequests();
+    	tranferRequestsVBox.getChildren().clear();
+    	for(TransferRequest transferRequest: transferRequests) {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("TransferRequestCard.fxml"));
+    		HBox transferReqcard = loader.load();
+    		TransferRequestsCardController transferRequestsCardController = loader.getController();
+    		transferRequestsCardController.setData(transferRequest);
+    		tranferRequestsVBox.getChildren().add(transferReqcard);
+    	}
+    
     }
     
     /*************************************************************************************************************/

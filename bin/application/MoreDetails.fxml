@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MoreDetailsController">
+   <children>
+      <Pane prefHeight="105.0" prefWidth="1280.0" style="-fx-background-color: rgb(220,117,248);">
+         <children>
+            <Label alignment="CENTER" layoutY="29.0" prefHeight="34.0" prefWidth="1280.0" text="Transfer Request Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="currentUserPane" layoutX="46.0" layoutY="165.0" prefHeight="319.0" prefWidth="359.0" style="-fx-border-color: rgb(220,117,248);">
+         <children>
+            <Label fx:id="currentUserLabel" alignment="CENTER" layoutX="41.0" layoutY="26.0" prefHeight="271.0" prefWidth="288.0" text="Name: somename                              Age: 21                                               " wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="registrationPane" layoutX="453.0" layoutY="165.0" prefHeight="319.0" prefWidth="359.0" style="-fx-border-color: rgb(220,117,248);">
+         <children>
+            <Label fx:id="registrationLabel" alignment="CENTER" layoutX="43.0" layoutY="24.0" prefHeight="271.0" prefWidth="288.0" text="Name: somename                              Age: 21                                               " wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="newUserPane" layoutX="865.0" layoutY="165.0" prefHeight="319.0" prefWidth="359.0" style="-fx-border-color: rgb(220,117,248);">
+         <children>
+            <Label fx:id="newUserLabel" alignment="CENTER" layoutX="36.0" layoutY="24.0" prefHeight="271.0" prefWidth="288.0" text="Name: somename                              Age: 21                                               " wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="457.0" layoutY="536.0" mnemonicParsing="false" onAction="#accept" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: rgb(220,117,248);" text="Accept" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="585.0" layoutY="536.0" mnemonicParsing="false" onAction="#reject" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: rgb(220,117,248);" text="Reject" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="724.0" layoutY="536.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: rgb(220,117,248);" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="137.0" layoutY="134.0" text="Current user Details" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="registrationPane" layoutX="545.0" layoutY="134.0" text="Registration Details" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="newUserPane" layoutX="970.0" layoutY="134.0" text="New user Details" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

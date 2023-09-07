@@ -31,7 +31,7 @@ public class OwnerDAO {
 		pst.setInt(1, id);
 		ResultSet rs = pst.executeQuery();
 		rs.next();
-		Owner owner = new Owner( rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+		Owner owner = new Owner(id ,rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 		return owner;
 	}
 	

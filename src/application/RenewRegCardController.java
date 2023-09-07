@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,8 +8,13 @@ import java.util.ArrayList;
 import dbManagement.RenewalRequestDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -16,11 +22,15 @@ import rtoManagement.Registration;
 import rtoManagement.Vehicle;
 
 public class RenewRegCardController {
-    @FXML
-    private Label expDateLabel, idLabel, regDateLabel, regNoLabel, vehicleTypeLabel, fuelTypeLabel, manYearLabel;
-    @FXML
-    private Button renewalDetailsButton;
+	Parent root;
+	Stage stage;
+	Scene scene;
 
+	@FXML
+	private Label expDateLabel, idLabel, regDateLabel, regNoLabel, vehicleTypeLabel, fuelTypeLabel, manYearLabel;
+	@FXML
+	private Button renewalDetailsButton;
+    
 	public void setData(Registration registration,Vehicle vehicle) {
     	
 		idLabel.setText(new Integer(registration.getOwnerID()).toString());
@@ -54,7 +64,7 @@ public class RenewRegCardController {
     	
     }
     
-    public void requestRenewal(ActionEvent event) throws SQLException {
+    public void requestRenewal(ActionEvent event) throws SQLException, IOException {
     	Alert renewalReqAlert =new Alert(AlertType.CONFIRMATION);
     	renewalReqAlert.setTitle("Renewal request alert");
     	renewalReqAlert.setHeaderText("You are about to request for renewal of your registration");
@@ -70,8 +80,14 @@ public class RenewRegCardController {
     	}else {
     		renewalReqAlert = new Alert(AlertType.INFORMATION);
     		renewalReqAlert.setTitle("Renewal request cancelled");
-    		renewalReqAlert.setHeaderText("Renewal request was cancelled");
-        	renewalReqAlert.showAndWait();
+    		renewalReqAlert.setHeaderText("Your Renewal request has been cancelled");
+        	if(renewalReqAlert.showAndWait().get() == ButtonType.OK) {
+        		root = FXMLLoader.load(getClass().getResource("SignInUser.fxml"));
+    			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    			scene = new Scene(root);
+    			stage.setScene(scene);
+    			stage.show();
+        	}
     	}
     }
     

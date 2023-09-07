@@ -1,15 +1,14 @@
 package application;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import dbManagement.OwnerDAO;
-import dbManagement.RegistrationDAO;
-import dbManagement.RenewalRequestDAO;
-import dbManagement.VehicleRequestsDAO;
+import dbManagement.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +29,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import rtoManagement.Owner;
 import rtoManagement.Registration;
+import rtoManagement.TransferRequest;
 import rtoManagement.Vehicle;
 
 public class SignInUserController implements Initializable{
@@ -41,15 +41,17 @@ public class SignInUserController implements Initializable{
 	Stage stage;
 	
 	@FXML
-	VBox regRenwalVBox, viewRegBox, viewRejectBox ;
+	VBox regRenwalVBox, viewRegBox, viewVehicleRejectBox, rejectRenewalVBox, transferRejectsVBox ;
 	@FXML
-	Label welcomeLabel;
+	Label welcomeLabel, regnoTlabel, newOwnerLabel;
 	@FXML
-	Pane paneProfile, paneTransfer, paneRenewal, paneVehicleReg, paneViewReg, paneViewRejects;
+	Pane paneProfile, paneTransferRequest, paneRenewal, paneVehicleReg, paneViewReg, paneViewVehicleRejects, rejectedRenewalPane, transferRejectsPane;
 	@FXML
-	Button profileButton, renewalButton, transferButton, viewRegButton, regVehicleButton, viewRejectButton;	
+	Button profileButton, renewalButton, transferButton, viewRegButton, regVehicleButton, viewVehicleRejectButton, viewRenewalRejectButton, viewTransferRejectButton;	
 	@FXML
-	private ChoiceBox<String> vehicleType, fuelType;
+	private ChoiceBox<String> vehicleType, fuelType, regNoChoiceBox;
+	@FXML
+	private ChoiceBox<Owner> ownerFieldChoiceBox;
 	@FXML
 	private TextField yearField,customNumberField;
 	@FXML
@@ -58,28 +60,93 @@ public class SignInUserController implements Initializable{
 	private Pane reRegisterNo;
 	@FXML
 	private Button registerButton, reRegisterButton;
+	@FXML
+	private Label nameLabel, addressLabel, ageLabel, stateLabel, contactLabel, districtLabel;
+	@FXML
+	private Pane transferDetailsPane;
+	
 	
 	Registration registration;
 	Vehicle vehicle;
+	String reg_no;
+	
+	
+	
+	public void displayWelcomeMessage(String name, int id) {
+		this.name = name;
+		this.id = id;
+		welcomeLabel.setText("Welcome "+name +" (●'◡'●)");
+		ownerFieldChoiceBox.getItems().addAll(populateOwnersList(id));
+		regNoChoiceBox.getItems().addAll(populateRegsitrationsList(id));
+	}
 	
 	String[] vehicleTypes = {"Two-Wheeler","Four-Wheeler","Light-Weight-Vehicles","Heavy-Weight-Vehicles"};
 	String[] fuelTypes = {"Petrol","Diesel","CNG","Electric"};
-	String reg_no;
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	Owner[] ownersList = populateOwnersList(id);
+	String[] registrationsList = populateRegsitrationsList(id);
+
+	public Owner[] populateOwnersList(int id){
+		ArrayList<Owner> owners = null; 
+		try {
+			System.out.println(id);
+			owners = TransferRequestsDAO.showAllOwners(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Owner[] ownersList = new Owner[owners.size()];
+		for(int i=0; i < owners.size();i++) {
+			ownersList[i] =  owners.get(i);
+			ownersList[i].getInfo();
+		}
+		return ownersList;
 		
+	}
+	
+	
+	private String[] populateRegsitrationsList(int id) {
+		
+		ArrayList<String> regNos = null;
+		try {
+			regNos = TransferRequestsDAO.showAllRegistrations(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[] regNoList = new String[regNos.size()];
+		for(int i = 0; i < regNos.size(); i++) {
+			regNoList[i] = regNos.get(i);
+		}
+		return regNoList;
+		
+	}
+
+
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		
+		try {
+			renderProfileDetailsInitially();
+		} catch (SQLException e) {
+			System.out.println("");
+		}
 		vehicleType.getItems().addAll(vehicleTypes);
 		fuelType.getItems().addAll(fuelTypes);
 		reRegisterNo.setVisible(false);
 		reRegisterButton.setVisible(false);
+		transferDetailsPane.setVisible(false);
 	}
 	
-	public void displayWelcomeMessage(String name, int id) {
-		welcomeLabel.setText("Welcome "+name +" (●'◡'●)");
-		this.name = name;
-		this.id = id;
+	private void renderProfileDetailsInitially() throws SQLException {
+		
+		Owner owner = OwnerDAO.fetchOwnerDetails(id);
+		ownerNameLabel.setText("Name:" + owner.getName());
+		ownerAgeLabel.setText("Age:" + owner.getAge());
+		ownerContactLabel.setText("Contact Number: " + owner.getContactNo());
+		ownerStateLabel.setText("State: " + owner.getState());
+		ownerDistrictLabel.setText("District: " + owner.getDistrict());
+		ownerAddressLabel.setText("Address: "+ owner.getAddress());
+		
 	}
+
 	
 	/******************* Render Panes and respective actions based on button clicks *****************/
 	
@@ -93,7 +160,8 @@ public class SignInUserController implements Initializable{
 			paneRenewal.toFront();
 		}
 		else if(event.getSource() == transferButton) {
-			paneTransfer.toFront();
+			paneTransferRequest.toFront();
+//			ChooseOwnerAndRegNo(event);
 		}
 		else if(event.getSource() == viewRegButton) {
 			paneViewReg.toFront();
@@ -102,27 +170,26 @@ public class SignInUserController implements Initializable{
 		else if(event.getSource() == regVehicleButton) {
 			paneVehicleReg.toFront();
 		}
-		else if(event.getSource() == viewRejectButton) {
-			paneViewRejects.toFront();
+		else if(event.getSource() == viewVehicleRejectButton) {
+			paneViewVehicleRejects.toFront();
 			renderViewRejectedRequests(event);
+		}
+		else if(event.getSource() == viewRenewalRejectButton) {
+			rejectedRenewalPane.toFront();
+			renderRejectedRenewableRequests(event);
+		}
+		else if(event.getSource() == viewTransferRejectButton) {
+			transferRejectsPane.toFront();
+			renderRejectedTransferRequests(event);
 		}
 	}
 	
 	/***************************************************************************/
 	
-	public void viewRegisteredVehicles(ActionEvent event) throws SQLException {
-		ArrayList<Registration> registrations = RegistrationDAO.viewOwnerRegistrations(id);
-		System.out.println("Welcome "+this.name+" your ID is: "+this.id);
-		System.out.println("Vehicles registered by your name: ");
-		for(Registration registration:registrations) {
-			registration.getInfo();
-		}
-	}
-	
-	
 	/************************** Profile details code *********************************************/
 	
 	public void renderProfileDetails(ActionEvent event) throws SQLException{
+		System.out.println(id);
 		Owner owner = OwnerDAO.fetchOwnerDetails(id);
 		ownerNameLabel.setText("Name:" + owner.getName());
 		ownerAgeLabel.setText("Age:" + owner.getAge());
@@ -130,12 +197,12 @@ public class SignInUserController implements Initializable{
 		ownerStateLabel.setText("State: " + owner.getState());
 		ownerDistrictLabel.setText("District: " + owner.getDistrict());
 		ownerAddressLabel.setText("Address: "+ owner.getAddress());
+		
 	}
 	
 	/**********************************************************************************************/
 	
-	/**************************** Called when view Registrations button is clicked 
-	 * @throws IOException ****************/
+	/**************************** Called when view Registrations button is clicked ****************/
 	
 	public void renderViewRegistrations(ActionEvent event) throws SQLException, IOException {
 		ArrayList<Registration> ownerRegistrations = RegistrationDAO.viewOwnerRegistrations(id);
@@ -155,21 +222,24 @@ public class SignInUserController implements Initializable{
 	
 	/*********************************************************************************************/
 	
-	/********************************* View Reject Requests *************************************/
+	/********************************* Called when view  Reject Requests *************************************/
 	
 	public void renderViewRejectedRequests(ActionEvent event) throws SQLException, IOException {
-		System.out.println("Rejected requests");
+
 		ArrayList<Registration> rejectRegistrations = RegistrationDAO.viewOwnerRejects(id);
 		ArrayList<Vehicle> rejectVehicles = RegistrationDAO.viewVehicleRejects(id);
-		viewRejectBox.getChildren().clear();
+		ArrayList<String> rejectRemarks = RegistrationDAO.getRemarks(id);
+
+		viewVehicleRejectBox.getChildren().clear();
 		for(int i = 0; i < rejectRegistrations.size(); i++) {
 			Registration registration = rejectRegistrations.get(i);
     		Vehicle vehicle = rejectVehicles.get(i);
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewRejectRequestsCard.fxml"));
-    		HBox viewRejectsCard = loader.load();
-    		ViewRejectRequestsCardController viewRejectRequestsCardController = loader.getController();
-    		viewRejectRequestsCardController.setData(registration,vehicle);
-    		viewRejectBox.getChildren().add(viewRejectsCard);
+    		String remark = rejectRemarks.get(i);
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewVehicleRejectRequestsCard.fxml"));
+    		Pane viewRejectsCard = loader.load();
+    		ViewVehicleRejectRequestsCardController viewRejectRequestsCardController = loader.getController();
+    		viewRejectRequestsCardController.setData(registration,vehicle,remark);
+    		viewVehicleRejectBox.getChildren().add(viewRejectsCard);
 		}
 	}
 	
@@ -242,6 +312,55 @@ public class SignInUserController implements Initializable{
 	
 	/*****************************************************************************************************/
 	
+	/******************************************* Create Transfer request *********************************/
+	
+	public void ChooseOwnerAndRegNo(ActionEvent event) {
+		
+		transferDetailsPane.setVisible(true);
+		Owner owner = ownerFieldChoiceBox.getValue();
+		regnoTlabel.setText(regNoChoiceBox.getValue());
+		newOwnerLabel.setText(owner.getName());
+		
+		nameLabel.setText("Name: " +owner.getName());
+		ageLabel.setText("Age: "+new Integer(owner.getAge()).toString());
+		contactLabel.setText("Contact number: "+owner.getContactNo());
+		stateLabel.setText("State: "+owner.getState());
+		districtLabel.setText("District: "+owner.getDistrict());
+		addressLabel.setText("Address: "+owner.getAddress());
+		
+	}
+	
+	public void raiseTransferRequest(ActionEvent event) throws SQLException {
+		
+		String regNo = regnoTlabel.getText();
+		int newOwnerID = ownerFieldChoiceBox.getValue().getOwnerID();
+		int currOwnerID = id;
+		
+		Alert requestConfirmation = new Alert(AlertType.CONFIRMATION);
+		requestConfirmation.setTitle("Transfer Request confirmation");
+		requestConfirmation.setHeaderText("Do you want to raise a transfer request with the following details");
+		requestConfirmation.setContentText("Click OK if you have cross verified with the respective owner details");
+		Alert requestSucess = new Alert(AlertType.INFORMATION);
+		
+		if(requestConfirmation.showAndWait().get() == ButtonType.OK) {
+			TransferRequest transferRequest = new TransferRequest(currOwnerID, newOwnerID, regNo);
+			TransferRequestsDAO.requestTranferToAdmin(transferRequest);
+			
+			requestSucess.setTitle("Request successfull");
+			requestSucess.setHeaderText("The request for transferring "+regNo+" is raised");
+			requestSucess.setContentText("Wait for admin's approval");
+			requestSucess.showAndWait();
+		}
+		else {
+			requestSucess.setTitle("Request failed");
+			requestSucess.setHeaderText("The request for transferring "+regNo+" failed");
+			requestSucess.showAndWait();
+		}	
+		
+	}
+	
+	/****************************************************************************************************/
+	
 	/********************** Get Details of registrations that are to be renewed **************************/
 	
 	public void renderRenewableRegistrations(ActionEvent event) throws IOException, SQLException {
@@ -257,6 +376,59 @@ public class SignInUserController implements Initializable{
     		RenewRegCardController renewRegCardController = loader.getController();
     		renewRegCardController.setData(registration,vehicle);
     		regRenwalVBox.getChildren().add(renewRegCard);
+		}
+		
+	}
+	
+	/****************************************************************************************************/
+	
+	/************************* Render rejected renewable requests 
+	 * @throws SQLException 
+	 * @throws IOException ***************************************/
+	
+	public void renderRejectedRenewableRequests(ActionEvent event) throws SQLException, IOException {
+		
+		ArrayList<Registration> registrations = RenewalRequestDAO.showRejectedRenewableRegistrationsToUser(id);
+		ArrayList<Vehicle> vehicles  = RenewalRequestDAO.showRejectedRenewableVehiclesToUser(id);
+		ArrayList<String> remarks = RenewalRequestDAO.showRejectedRenewableRemarksToUser(id);
+		rejectRenewalVBox.getChildren().clear();
+		
+		for(int i = 0; i < registrations.size(); i++) {
+			Registration registration = registrations.get(i);
+			Vehicle vehicle = vehicles.get(i);
+			String remark = remarks.get(i);
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RenewalRejectCard.fxml"));
+    		Pane viewRejectsCard = loader.load();
+    		RenewalRejectCardController renewalRejectCardController = loader.getController();
+    		renewalRejectCardController.setData(registration,vehicle,remark);
+    		rejectRenewalVBox.getChildren().add(viewRejectsCard);
+		}
+		
+	}
+	
+	/****************************************************************************************************/
+	
+	/************************************** Render rejected transfer requests 
+	 * @throws SQLException 
+	 * @throws IOException ***************************/
+	
+	public void renderRejectedTransferRequests(ActionEvent event) throws SQLException, IOException {
+		
+		ArrayList<TransferRequest> transferRequests = TransferRequestsDAO.showAllRejectedTransferRequests(id);
+		ArrayList<String> remarks = TransferRequestsDAO.showAllRejectedRemarksTransferRequests(id);
+		transferRejectsVBox.getChildren().clear();
+		for(int i = 0; i < transferRequests.size();i++) {
+			
+			TransferRequest transferRequest = transferRequests.get(i);
+			String remark = remarks.get(i);
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RejectTransferRequestCard.fxml"));
+    		Pane viewRejectsCard = loader.load();
+    		RejectTransferRequestCardController rejectTransferRequestCardController = loader.getController();
+    		rejectTransferRequestCardController.setData(transferRequest,remark);
+    		transferRejectsVBox.getChildren().add(viewRejectsCard);
+			
 		}
 		
 	}

@@ -32,7 +32,7 @@ public class RenewalRequestDAO {
 				registration.getInfo();
 			}
 		}
-		
+		con.close();
 		return renewableRegistrations;
 		
 	}
@@ -56,7 +56,7 @@ public class RenewalRequestDAO {
 			}
 			
 		}
-		
+		con.close();
 		for(Vehicle vehicle: renewableVehicles) {
 			vehicle.getInfo();
 		}
@@ -78,6 +78,7 @@ public class RenewalRequestDAO {
 		pst.setInt(6, vehicle.getManufactureYear());
 		pst.setString(7, registration.getRegNo());
 		int rows = pst.executeUpdate();
+		con.close();
 		System.out.println("No of rows updated in renewa registration table: "+rows);
 	}
 	
@@ -96,7 +97,7 @@ public class RenewalRequestDAO {
 			String regNo = rs.getString(4);
 			renewableRegistrationsInfo.add(new Registration(ownerID,regDate,expDate,regNo));
 		}
-
+		con.close();
 		return renewableRegistrationsInfo;	
 	}
 	
@@ -112,7 +113,7 @@ public class RenewalRequestDAO {
 			int manYear = rs.getInt(3);
 			renewableVehiclesInfo.add(new Vehicle(vehicleType,fuelType,manYear));
 		}
-
+		con.close();
 		return renewableVehiclesInfo;	
 	}
 	
@@ -139,6 +140,7 @@ public class RenewalRequestDAO {
 		pstUpdate.setDate(2, registration.getExpiryDate());
 		pstUpdate.setString(3,registration.getRegNo());
 		int rowsUpdate = pstUpdate.executeUpdate();
+		con.close();
 		System.out.println("Registration renewed");
 		
 	}
@@ -151,8 +153,59 @@ public class RenewalRequestDAO {
 		pst.setString(1,remarks);
 		pst.setString(2, registration.getRegNo());
 		int rows = pst.executeUpdate();
+		con.close();
 		System.out.println("Renewal rejected");
 		
+	}
+	
+	public static ArrayList<Registration> showRejectedRenewableRegistrationsToUser(int id) throws SQLException {
+		ArrayList<Registration> renewableRegistrationsInfo = new ArrayList<Registration>();
+		String query = "select ownerID, reg_date, expiry_date, reg_no from registration_renewal_requests where renewal_status = 'Rejected' and ownerID = ?;";
+		Connection con = DBconnect.connectDB();
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setInt(1, id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			int ownerID = rs.getInt(1);
+			Date regDate = rs.getDate(2);
+			Date expDate = rs.getDate(3);
+			String regNo = rs.getString(4);
+			renewableRegistrationsInfo.add(new Registration(ownerID,regDate,expDate,regNo));
+		}
+		con.close();
+		return renewableRegistrationsInfo;	
+	}
+	
+	public static ArrayList<Vehicle> showRejectedRenewableVehiclesToUser(int id) throws SQLException {
+		ArrayList<Vehicle> renewableVehiclesInfo = new ArrayList<Vehicle>();
+		String query = "select vehicle_type, fuel_type, man_year from registration_renewal_requests where renewal_status = 'Rejected' and ownerID = ?;";
+		Connection con = DBconnect.connectDB();
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setInt(1,id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			String vehicleType = rs.getString(1);
+			String fuelType = rs.getString(2);
+			int manYear = rs.getInt(3);
+			renewableVehiclesInfo.add(new Vehicle(vehicleType,fuelType,manYear));
+		}
+		con.close();
+		return renewableVehiclesInfo;	
+	}
+	
+	public static ArrayList<String> showRejectedRenewableRemarksToUser(int id) throws SQLException {
+		ArrayList<String> remarks = new ArrayList<String>();
+		String query = "select remarks from registration_renewal_requests where renewal_status = 'Rejected' and ownerID = ?;";
+		Connection con = DBconnect.connectDB();
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setInt(1,id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			String remark = rs.getString(1);
+			remarks.add(remark);
+		}
+		con.close();
+		return remarks;	
 	}
 	
 }

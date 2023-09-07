@@ -19,13 +19,20 @@ public class Owner {
 	
 	
 	
-	public Owner( String name, int age, String contactNo, String state , String district,String address) {
+	public Owner(int ownerID, String name, int age, String contactNo, String state , String district,String address) {
+		this.ownerID = ownerID;
 		this.name = name;
 		this.age = age;
 		this.contactNo = contactNo;
 		this.state = state;
 		this.district = district; 
 		this.address = address;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 	
 	public int getOwnerID() {

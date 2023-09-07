@@ -133,7 +133,7 @@ public class SignUpController {
 		state = ownerStateField.getText();
 		district = ownerDistrictField.getText();
 		address = ownerAddressField.getText();
-		Owner owner = new Owner( owner_name, age, contactNo, state, district, address);
+		Owner owner = new Owner(id, owner_name, age, contactNo, state, district, address);
 		owner.setOwnerID(id);
 		owner.getInfo();
 		UserAuthentication.registerOwner(owner);
