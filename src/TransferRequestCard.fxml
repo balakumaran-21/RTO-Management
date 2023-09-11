@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="69.0" prefWidth="807.0" style="-fx-border-color: rgb(220,117,248);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TransferRequestsCardController">
+   <children>
+      <Label fx:id="current_id_label" alignment="CENTER" prefHeight="39.0" prefWidth="231.0" text="10000">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="reg_no_label" alignment="CENTER" prefHeight="39.0" prefWidth="247.0" text="TN05J2321">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="new_owner_id_label" alignment="CENTER" prefHeight="39.0" prefWidth="170.0" text="10002">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#moreDetails" prefHeight="37.0" prefWidth="143.0" style="-fx-background-color: rgb(220,117,248);" text="More Details &gt;&gt;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</HBox>

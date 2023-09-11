@@ -1,0 +1,36 @@
+
+.button-field{
+ 	-fx-background-color: #F5F5F5;
+ 	-fx-text-fill: #dc75f8;
+ 	-fx-border-color: #dc75f8;
+ 	-fx-background-radius:0 25 25 0;
+ 	-fx-border-radius: 0 25 25 0 ;
+ 	-fx-pref-width: 260; 
+ }
+
+.button-field:hover{
+ 	-fx-background-color: #dc75f8;
+ 	-fx-text-fill: #F5F5F5;
+ 	-fx-translate-x: 10 ;
+ 	
+ }
+  
+ .button-field:pressed{
+ 	-fx-background-color: rgb(220,117,248,0.9);
+ 	-fx-translate-x: 10 ;
+ }
+ 
+ .textfield{
+ 	-fx-prompt-text-fill: rgb(220,117,248,0.8);
+ }
+ 
+ .textfield-focused{
+ 	-fx-border-color:#dc75f8;
+ 	-fx-border-width: 2px;	
+ }
+ 
+ .button-clicked{
+ 	-fx-translate-x: 10;
+ 	-fx-background-color: #dc75f8;
+ 	-fx-text-fill: #F5F5F5;
+ }

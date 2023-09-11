@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="657.0" style="-fx-border-color: #dc75f8; -fx-border-radius: 25; -fx-background-radius: 25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrationCardController">
+   <children>
+      <Label layoutX="114.0" layoutY="11.0" prefHeight="27.0" prefWidth="173.0" text="Registered Date ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="47.0" prefHeight="27.0" prefWidth="173.0" text="Expiration Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="83.0" prefHeight="27.0" prefWidth="173.0" text="Vehicle Type ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="120.0" prefHeight="27.0" prefWidth="173.0" text="Fuel Type ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="160.0" prefHeight="27.0" prefWidth="173.0" text="Manufactured Year">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="196.0" prefHeight="27.0" prefWidth="173.0" text="Registration Number">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="233.0" prefHeight="27.0" prefWidth="173.0" text="Registration Status">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="remarkTLabel" layoutX="114.0" layoutY="273.0" prefHeight="27.0" prefWidth="173.0" text="Remarks">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regDateLabel" layoutX="339.0" layoutY="15.0" prefHeight="27.0" prefWidth="173.0" text="2012-02-12" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="expDateLabel" layoutX="339.0" layoutY="51.0" prefHeight="27.0" prefWidth="173.0" text="2102-02-03" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vehicleTypeLabel" layoutX="339.0" layoutY="87.0" prefHeight="27.0" prefWidth="173.0" text="Two-Wheeler" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="fuelTypeLabel" layoutX="339.0" layoutY="124.0" prefHeight="27.0" prefWidth="173.0" text="Petrol" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="manufactureYearLabel" layoutX="339.0" layoutY="164.0" prefHeight="27.0" prefWidth="173.0" text="2003" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regNoLabel" layoutX="339.0" layoutY="200.0" prefHeight="27.0" prefWidth="173.0" text="TN01J1234" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regStatusLabel" layoutX="339.0" layoutY="237.0" prefHeight="27.0" prefWidth="173.0" text="Accepted" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="remarkLabel" alignment="TOP_LEFT" layoutX="339.0" layoutY="277.0" prefHeight="60.0" prefWidth="262.0" text="Reason for rejection will be displayed here" textFill="#dc75f8" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="renewalRequiredLabel" alignment="CENTER" layoutY="339.0" prefHeight="27.0" prefWidth="657.0" style="-fx-background-color: #dc75f8; -fx-background-radius: 0 0  25 25;" text="This registrtation has expired must be submitted for renewal" textFill="WHITESMOKE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

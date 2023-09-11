@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="622.0" style="-fx-border-color: rgb(220,117,248); -fx-margin-top: 10px; -fx-margin-bottom: 10px; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewVehicleRejectRequestsCardController">
+   <children>
+      <Label fx:id="regDateLabel" alignment="CENTER" layoutX="325.0" layoutY="186.0" prefHeight="40.0" prefWidth="140.0" text="2023-09-02">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="expDateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="226.0" prefHeight="40.0" prefWidth="114.0" text="2025-09-02">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="idLabel" alignment="CENTER" layoutX="323.0" layoutY="26.0" prefHeight="40.0" prefWidth="96.0" text="10000">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vehicleTypeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="330.0" layoutY="66.0" prefHeight="40.0" prefWidth="134.0" text="Two-Wheeler">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="fuelTypeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="321.0" layoutY="106.0" prefHeight="40.0" prefWidth="105.0" text="Petrol">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="manYearLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="146.0" prefHeight="40.0" prefWidth="164.0" text="2003">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="regNoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" layoutY="266.0" prefHeight="40.0" prefWidth="164.0" text="TN01M9743">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="26.0" prefHeight="40.0" prefWidth="200.0" text="Owner ID">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="66.0" prefHeight="40.0" prefWidth="200.0" text="Vehicle Type">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="106.0" prefHeight="40.0" prefWidth="200.0" text="Fuel Type">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="146.0" prefHeight="40.0" prefWidth="200.0" text="Manufacture Year">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="186.0" prefHeight="40.0" prefWidth="200.0" text="Registration Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="226.0" prefHeight="40.0" prefWidth="200.0" text="Expiry Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="266.0" prefHeight="40.0" prefWidth="200.0" text="Registration number">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="306.0" prefHeight="40.0" prefWidth="200.0" text="Reason for rejection" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="remarks" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" layoutX="344.0" layoutY="317.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="249.0" text="This is the reason for rejection of your vehicle" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

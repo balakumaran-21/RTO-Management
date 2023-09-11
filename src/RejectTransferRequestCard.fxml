@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="714.0" style="-fx-border-color: #dc75f8; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RejectTransferRequestCardController">
+   <children>
+      <Pane layoutX="30.0" layoutY="29.0" prefHeight="265.0" prefWidth="305.0" style="-fx-border-color: #dc75f8;">
+         <children>
+            <Label fx:id="registrationDetailsLabel" alignment="CENTER" layoutX="21.0" layoutY="16.0" prefHeight="233.0" prefWidth="264.0" text="Registration Details" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="382.0" layoutY="29.0" prefHeight="265.0" prefWidth="305.0" style="-fx-border-color: #dc75f8;">
+         <children>
+            <Label fx:id="newOwnerDetailsLabel" alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="233.0" prefWidth="264.0" text="new Owner Details" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="61.0" layoutY="318.0" text="Reson for Rejection" textFill="#dc75f8">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="remarksLabel" alignment="TOP_LEFT" layoutX="233.0" layoutY="320.0" prefHeight="92.0" prefWidth="421.0" text="This is the reason for rejection of transferRequest and the" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
